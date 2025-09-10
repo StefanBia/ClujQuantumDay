@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Quantum Computing Hackathon Design System
+All colors MUST be HSL. Quantum-inspired color palette with deep space themes.
+*/
+
+@layer base {
+  :root {
+    /* Quantum Dark Theme - Main Colors */
+    --background: 222 47% 3%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 5%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 5%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Quantum Primary - Electric Blue */
+    --primary: 200 100% 60%;
+    --primary-foreground: 222 47% 3%;
+    --primary-glow: 200 100% 70%;
+
+    /* Quantum Secondary - Deep Purple */
+    --secondary: 270 50% 40%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 47% 8%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Quantum Accent - Bright Cyan */
+    --accent: 180 100% 50%;
+    --accent-foreground: 222 47% 3%;
+
+    /* Quantum Tertiary - Purple */
+    --quantum-purple: 280 60% 50%;
+    --quantum-purple-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 47% 15%;
+    --input: 222 47% 10%;
+    --ring: 200 100% 60%;
+
+    /* Quantum Gradients */
+    --gradient-quantum: linear-gradient(135deg, hsl(200 100% 60%), hsl(280 60% 50%));
+    --gradient-cosmic: linear-gradient(180deg, hsl(222 47% 3%), hsl(222 47% 8%));
+    --gradient-particle: radial-gradient(circle, hsl(200 100% 60% / 0.3), transparent 70%);
+
+    /* Quantum Effects */
+    --shadow-quantum: 0 0 30px hsl(200 100% 60% / 0.3);
+    --shadow-glow: 0 0 50px hsl(200 100% 70% / 0.4);
+    --transition-quantum: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light theme disabled - Quantum theme is inherently dark */
+  .light {
+    /* Same as root for consistency */
+    --background: 222 47% 3%;
+    --foreground: 210 40% 98%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(222 47% 3%), hsl(222 47% 8%));
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Quantum Button Variants */
+  .btn-quantum {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground;
+    @apply hover:shadow-[0_0_30px_hsl(200_100%_60%/0.5)] transition-all duration-300;
+    @apply border border-primary/20;
+  }
+  
+  .btn-quantum-outline {
+    @apply border-2 border-primary bg-transparent text-primary;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply hover:shadow-[0_0_20px_hsl(200_100%_60%/0.3)] transition-all duration-300;
+  }
+
+  /* Quantum Cards */
+  .card-quantum {
+    @apply bg-card/50 backdrop-blur-sm border border-primary/20;
+    @apply hover:border-primary/40 transition-all duration-300;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Quantum Text Effects */
+  .text-quantum-glow {
+    text-shadow: 0 0 10px hsl(200 100% 60% / 0.5);
+  }
+
+  .text-gradient-quantum {
+    @apply bg-gradient-to-r from-primary via-accent to-quantum-purple bg-clip-text text-transparent;
+  }
+
+  /* Particle Animation */
+  .particle-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .particle-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, hsl(200 100% 60% / 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, hsl(280 60% 50% / 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, hsl(180 100% 50% / 0.1) 0%, transparent 50%);
+    animation: particles 20s ease-in-out infinite;
+  }
+
+  @keyframes particles {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+}
